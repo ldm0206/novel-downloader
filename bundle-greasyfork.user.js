@@ -5,9 +5,9 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.916
+// @version        5.2.922
 // @author         bgme
-// @supportURL     https://github.com/404-novel-project/novel-downloader
+// @supportURL     https://github.com/ldm0206/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
 // @exclude        *://m.yuzhaige.cc/tag/*/
 // @exclude        *://m.yuzhaige.cc/sort/*/
@@ -337,7 +337,7 @@
 // @grant          GM.getValue
 // @grant          GM.deleteValue
 // @homepageURL    https://github.com/404-novel-project/novel-downloader
-// @icon           https://cdn.jsdelivr.net/gh/404-novel-project/novel-downloader/assets/icon.png
+// @icon           https://cdn.jsdelivr.net/gh/ldm0206/novel-downloader/assets/icon.png
 // @incompatible   Internet Explorer
 // @license        AGPL-3.0-or-later
 // @namespace      https://blog.bgme.me
@@ -11325,8 +11325,8 @@ class BaseRuleClass {
                 if (window.failedCount > 10) {
                     if (!window.stopFlag.aborted) {
                         window.stopController.abort();
-                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
-                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
+                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
+                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
                         (0,log/* saveLogTextToFile */.M6)();
                     }
                 }
@@ -11348,8 +11348,8 @@ class BaseRuleClass {
                 if (window.failedCount > 10) {
                     if (!window.stopFlag.aborted) {
                         window.stopController.abort();
-                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
-                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
+                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
+                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
                         (0,log/* saveLogTextToFile */.M6)();
                     }
                 }
@@ -11459,10 +11459,10 @@ class BaseRuleClass {
         self.postHook();
         if (!(error instanceof main/* ExpectError */.K5)) {
             document.getElementById("button-div")?.remove();
-            loglevel_default().error("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
+            loglevel_default().error("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
             failedPlus();
-            alert("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
-            window.open("https://github.com/404-novel-project/novel-downloader/issues");
+            alert("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
+            window.open("https://github.com/ldm0206/novel-downloader/issues");
             (0,log/* saveLogTextToFile */.M6)();
         }
     }
@@ -15324,7 +15324,7 @@ class Gongzicp extends _rules__WEBPACK_IMPORTED_MODULE_1__/* .BaseRuleClass */ .
     }
     async bookParse() {
         const bookUrl = document.location.href;
-        const bookId = document.querySelector("span.id").innerText.replace("CP", "");
+        const bookId = document.querySelector("span.c-light-gray").innerText.replace("CP", "");
         if (!bookId) {
             throw new Error("获取bookID出错");
         }
@@ -28962,12 +28962,13 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
             }
             async function getChapterInfo(url) {
                 loglevel_default().debug(`请求地址: ${url}, Referrer: ${chapterUrl}, 重试次数: ${retryTime}`);
+                const user_agent = "Mobile " + Date.now();
                 return new Promise((resolve) => {
                     (0,GM/* _GM_xmlhttpRequest */.nV)({
                         url: url,
                         headers: {
                             referer: "http://android.jjwxc.net?v=349",
-                            "user-agent": "Dalvik/2.1.0",
+                            "user-agent": user_agent,
                         },
                         method: "GET",
                         onload: function (response) {
