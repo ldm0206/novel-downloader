@@ -109,9 +109,9 @@ export default {
       ssri: !dev,
       pretty: true,
       downloadBaseURL:
-        "https://github.com/yingziwu/novel-downloader/raw/gh-pages/",
+        "https://github.com/ldm0206/novel-downloader/raw/gh-pages/",
       updateBaseURL:
-        "https://github.com/yingziwu/novel-downloader/raw/gh-pages/",
+        "https://github.com/ldm0206/novel-downloader/raw/gh-pages/",
       proxyScript: {
         filename: "[basename].proxy.user.js",
         baseURL: "http://webpack.localhost:11944/",
