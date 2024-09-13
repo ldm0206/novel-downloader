@@ -6,15 +6,14 @@ on:
       - license.txt
       - third-party-license.txt
       - tools/*
-    branches-ignore:
-      - gh-pages
-      - "dependabot/**"
+    branches:
+      - master
   pull_request:
     paths-ignore:
       - README.md
       - license.txt
-    branches-ignore:
-      - gh-pages
+    branches:
+      - master
   workflow_dispatch:
   schedule:
     - cron: 10 10 */7 * *
