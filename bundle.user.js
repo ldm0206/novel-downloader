@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.922
+// @version        5.2.923
 // @author         bgme
 // @supportURL     https://github.com/ldm0206/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -324,7 +324,7 @@
 // @connect        xiaoshuowanben.com
 // @connect        xbyuan.com
 // @connect        *
-// @downloadURL    https://github.com/yingziwu/novel-downloader/raw/gh-pages/bundle.user.js
+// @downloadURL    https://github.com/ldm0206/novel-downloader/raw/gh-pages/bundle.user.js
 // @grant          unsafeWindow
 // @grant          GM_info
 // @grant          GM_xmlhttpRequest
@@ -347,7 +347,7 @@
 // @require        https://unpkg.com/nunjucks@3.2.4/browser/nunjucks.min.js#sha512-YvU0oaPCJSOIFni9rIOthOs5GgtU5kNZMKQG/Nt33t/H9g/1+TK7KJuMsCZS6v4O3+x253OZlTzPryrUtxxORw==
 // @require        https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js#sha512-7cmvZh1K81vCevOl9YPcvR6lCFgxol/biMYQ+YwsCiQFePxFrMVbJaHGUlu01/2EhNxKzKRpztUhWrwLyKCfiQ==
 // @run-at         document-start
-// @updateURL      https://github.com/yingziwu/novel-downloader/raw/gh-pages/bundle.meta.js
+// @updateURL      https://github.com/ldm0206/novel-downloader/raw/gh-pages/bundle.meta.js
 // ==/UserScript==
 
 /*! For license information please see bundle.js.LICENSE.txt */
