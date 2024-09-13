@@ -253,10 +253,10 @@ export abstract class BaseRuleClass {
           if (!(window as GmWindow).stopFlag.aborted) {
             (window as GmWindow).stopController.abort();
             console.error(
-              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader"
+              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader"
             );
             alert(
-              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader"
+              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader"
             );
             saveLogTextToFile();
           }
@@ -278,10 +278,10 @@ export abstract class BaseRuleClass {
           if (!(window as GmWindow).stopFlag.aborted) {
             (window as GmWindow).stopController.abort();
             console.error(
-              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader"
+              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader"
             );
             alert(
-              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader"
+              "连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader"
             );
             saveLogTextToFile();
           }
@@ -419,16 +419,16 @@ export abstract class BaseRuleClass {
     if (!(error instanceof ExpectError)) {
       document.getElementById("button-div")?.remove();
       log.error(
-        "运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader"
+        "运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader"
       );
 
       // noinspection JSIgnoredPromiseFromCall
       failedPlus();
       alert(
-        "运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader"
+        "运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader"
       );
       window.open(
-        "https://github.com/404-novel-project/novel-downloader/issues"
+        "https://github.com/ldm0206/novel-downloader/issues"
       );
       saveLogTextToFile();
     }
