@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.925
+// @version        5.2.927
 // @author         bgme
 // @supportURL     https://github.com/ldm0206/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -11321,6 +11321,7 @@ class BaseRuleClass {
         }
         progress.vm.totalChapterNumber = chapters.length;
         if (self.concurrencyLimit === 1) {
+            let chapteri = -1;
             for (const chapter of chapters) {
                 if (window.failedCount > 10) {
                     if (!window.stopFlag.aborted) {
@@ -11334,6 +11335,8 @@ class BaseRuleClass {
                     throw new main/* ExpectError */.K5("[chapter]收到停止信号，停止继续下载。");
                 }
                 try {
+                    chapteri++;
+                    await (0,misc/* sleep */.yy)(chapteri * 100 + Math.round(Math.random() * 1000));
                     let chapterObj = await chapter.init();
                     chapterObj = await postChapterParseHook(chapterObj, saveBookObj);
                 }
@@ -15321,6 +15324,7 @@ class Gongzicp extends _rules__WEBPACK_IMPORTED_MODULE_1__/* .BaseRuleClass */ .
         super();
         this.attachmentMode = "TM";
         this.concurrencyLimit = 1;
+        this.maxRunLimit = 1;
     }
     async bookParse() {
         const bookUrl = document.location.href;
@@ -15396,7 +15400,6 @@ class Gongzicp extends _rules__WEBPACK_IMPORTED_MODULE_1__/* .BaseRuleClass */ .
             else if (chapterObj.type === "item") {
                 const chapterUrl = [
                     document.location.origin,
-                    "v4",
                     `read-${chapterObj.id}.html`,
                 ].join("/");
                 const chapterNumber = parseInt(chapterObj.order);
@@ -15512,11 +15515,10 @@ class Gongzicp extends _rules__WEBPACK_IMPORTED_MODULE_1__/* .BaseRuleClass */ .
                     headers: {
                         Accept: "application/json, text/plain, */*",
                         Client: "pc",
-                        "Content-Type": "application/json;charset=utf-8",
+                        "Content-Type": "application/json",
                     },
                     referrer: chapterUrl,
                     method: "GET",
-                    mode: "cors",
                 })
                     .then((resp) => resp.json())
                     .catch((error) => _log__WEBPACK_IMPORTED_MODULE_2___default().error(error));
@@ -15528,8 +15530,8 @@ class Gongzicp extends _rules__WEBPACK_IMPORTED_MODULE_1__/* .BaseRuleClass */ .
                         throw new Error(`请求 ${url} 失败`);
                     }
                     _log__WEBPACK_IMPORTED_MODULE_2___default().warn("[chapter]疑似被阻断，进行随机翻页……");
-                    const ci = Math.round(Math.random() * retryTime) + 1;
-                    for (let i = 0; i < ci; i++) {
+                    const walkerTime = Math.round(Math.random() * retryTime) + 1;
+                    for (let i = 0; i < walkerTime; i++) {
                         await (0,_lib_misc__WEBPACK_IMPORTED_MODULE_9__/* .sleep */ .yy)(3000 + Math.round(Math.random() * 5000));
                         randomWalker();
                     }
@@ -15632,7 +15634,7 @@ class Gongzicp extends _rules__WEBPACK_IMPORTED_MODULE_1__/* .BaseRuleClass */ .
             };
         }
         async function antiAntiCrawler() {
-            if (Math.random() < 0.15) {
+            if (Math.random() < 0.2) {
                 randomWalker();
             }
             await (0,_lib_misc__WEBPACK_IMPORTED_MODULE_9__/* .sleep */ .yy)(3000 + Math.round(Math.random() * 4000));
@@ -28328,6 +28330,8 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                                 options: {},
                             });
                             const isLogin = () => {
+                                if (typeof unsafeWindow.tokenOptions === "object")
+                                    return true;
                                 return !document.getElementById("jj_login");
                             };
                             if (isVIP() && !isLogin()) {
@@ -28355,6 +28359,8 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                             options: {},
                         });
                         const isLogin = () => {
+                            if (typeof unsafeWindow.tokenOptions === "object")
+                                return true;
                             return !document.getElementById("jj_login");
                         };
                         if (isVIP() && !isLogin()) {
