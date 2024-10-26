@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.927
+// @version        5.2.932
 // @author         bgme
 // @supportURL     https://github.com/ldm0206/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -28873,26 +28873,25 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
             };
         }
         let retryTime = 0;
+        function extractKeys(responseHeader) {
+            const accessKeyMatch = responseHeader.match(/accesskey:([^\r\n]+)/);
+            const keyStringMatch = responseHeader.match(/keystring:([^\r\n]+)/);
+            const accessKey = accessKeyMatch ? accessKeyMatch[1].trim() : "accesskey";
+            const keyString = keyStringMatch ? keyStringMatch[1].trim() : "keystring";
+            return { accessKey, keyString };
+        }
         function decodeVIPResopnce(responseHeader, responseText) {
             let v43, v38, dest;
-            let accesskey = "accesskey", keyString = "keystring";
-            const arr = responseHeader.trim().split(/[\r\n]+/);
-            const headerMap = { "accesskey": "0", "keystring": "0" };
-            arr.forEach((line) => {
-                const parts = line.split(": ");
-                const header = parts.shift();
-                const value = parts.join(": ");
-                if (header == "accesskey")
-                    accesskey = value;
-                else if (header == "keystring")
-                    keyString = value;
-            });
+            let accessKey = "accesskey", keyString = "keystring";
+            const keys = extractKeys(responseHeader);
+            accessKey = keys.accessKey;
+            keyString = keys.keyString;
             const content = String(responseText);
-            const accesskeyLen = accesskey.length;
+            const accesskeyLen = accessKey.length;
             let v9 = 0;
-            const v6 = String(accesskey[accesskeyLen - 1]).charCodeAt(0);
+            const v6 = String(accessKey[accesskeyLen - 1]).charCodeAt(0);
             for (let i = 0; i < accesskeyLen; i++) {
-                v9 += accesskey[i].charCodeAt(0);
+                v9 += accessKey[i].charCodeAt(0);
             }
             const v15 = v9 % keyString.length;
             const v17 = v9 / 65;
@@ -28926,6 +28925,7 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                 result = decrypted.toString(external_CryptoJS_.enc.Utf8);
             }
             catch (e) {
+                loglevel_default().debug(`decodeVIPResopnce error, 即VIP章节解密失败：${e}`);
                 result = '{"message":"try again!"}';
             }
             return result;
@@ -28979,7 +28979,6 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                         method: "GET",
                         onload: function (response) {
                             if (response.status === 200) {
-                                retryTime = 0;
                                 if (isVIP) {
                                     let decodeResponseText = String(response.responseText);
                                     let resultI = JSON.parse('{"message":"try again!"}');
@@ -28987,7 +28986,7 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                                         resultI = JSON.parse(decodeResponseText);
                                     }
                                     catch (e) {
-                                        decodeResponseText = decodeVIPResopnce(response.responseHeaders, String(response.responseText));
+                                        decodeResponseText = decodeVIPResopnce(response.responseHeaders, decodeResponseText);
                                     }
                                     try {
                                         resultI = JSON.parse(decodeResponseText);
@@ -29004,6 +29003,7 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                                 }
                             }
                             else {
+                                loglevel_default().error(`response status = ${response.status}`);
                                 const resultI = JSON.parse('{"message":"try again!"}');
                                 resolve(resultI);
                             }
