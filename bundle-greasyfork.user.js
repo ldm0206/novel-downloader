@@ -5,9 +5,9 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.950
+// @version        5.2.943
 // @author         bgme
-// @supportURL     https://github.com/ldm0206/novel-downloader
+// @supportURL     https://github.com/404-novel-project/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
 // @exclude        *://m.yuzhaige.cc/tag/*/
 // @exclude        *://m.yuzhaige.cc/sort/*/
@@ -325,7 +325,7 @@
 // @connect        xiaoshuowanben.com
 // @connect        xbyuan.com
 // @connect        *
-// @downloadURL    https://github.com/ldm0206/novel-downloader/raw/gh-pages/bundle-greasyfork.user.js
+// @downloadURL    https://github.com/yingziwu/novel-downloader/raw/gh-pages/bundle-greasyfork.user.js
 // @grant          unsafeWindow
 // @grant          GM_info
 // @grant          GM_xmlhttpRequest
@@ -338,7 +338,7 @@
 // @grant          GM.getValue
 // @grant          GM.deleteValue
 // @homepageURL    https://github.com/404-novel-project/novel-downloader
-// @icon           https://cdn.jsdelivr.net/gh/ldm0206/novel-downloader/assets/icon.png
+// @icon           https://cdn.jsdelivr.net/gh/404-novel-project/novel-downloader/assets/icon.png
 // @incompatible   Internet Explorer
 // @license        AGPL-3.0-or-later
 // @namespace      https://blog.bgme.me
@@ -348,7 +348,7 @@
 // @require        https://unpkg.com/nunjucks@3.2.4/browser/nunjucks.min.js#sha512-YvU0oaPCJSOIFni9rIOthOs5GgtU5kNZMKQG/Nt33t/H9g/1+TK7KJuMsCZS6v4O3+x253OZlTzPryrUtxxORw==
 // @require        https://unpkg.com/vue@3.3.4/dist/vue.global.prod.js#sha512-7cmvZh1K81vCevOl9YPcvR6lCFgxol/biMYQ+YwsCiQFePxFrMVbJaHGUlu01/2EhNxKzKRpztUhWrwLyKCfiQ==
 // @run-at         document-start
-// @updateURL      https://github.com/ldm0206/novel-downloader/raw/gh-pages/bundle-greasyfork.meta.js
+// @updateURL      https://github.com/yingziwu/novel-downloader/raw/gh-pages/bundle-greasyfork.meta.js
 // ==/UserScript==
 
 /******/ (() => { // webpackBootstrap
@@ -11327,8 +11327,8 @@ class BaseRuleClass {
                 if (window.failedCount > 10) {
                     if (!window.stopFlag.aborted) {
                         window.stopController.abort();
-                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
-                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
+                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
+                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
                         (0,log/* saveLogTextToFile */.M6)();
                     }
                 }
@@ -11352,8 +11352,8 @@ class BaseRuleClass {
                 if (window.failedCount > 10) {
                     if (!window.stopFlag.aborted) {
                         window.stopController.abort();
-                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
-                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
+                        console.error("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
+                        alert("连续十章下载失败，放弃本次下载。\n请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
                         (0,log/* saveLogTextToFile */.M6)();
                     }
                 }
@@ -11463,10 +11463,10 @@ class BaseRuleClass {
         self.postHook();
         if (!(error instanceof main/* ExpectError */.K5)) {
             document.getElementById("button-div")?.remove();
-            loglevel_default().error("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
+            loglevel_default().error("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
             failedPlus();
-            alert("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/ldm0206/novel-downloader");
-            window.open("https://github.com/ldm0206/novel-downloader/issues");
+            alert("运行过程出错，请附上相关日志至支持地址进行反馈。\n支持地址：https://github.com/404-novel-project/novel-downloader");
+            window.open("https://github.com/404-novel-project/novel-downloader/issues");
             (0,log/* saveLogTextToFile */.M6)();
         }
     }
@@ -12929,63 +12929,65 @@ const ptwxz = () => (0,_template__WEBPACK_IMPORTED_MODULE_0__/* .mkRuleClass */ 
 /***/ }),
 
 /***/ "./src/rules/onePage/original/syosetu.ts":
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   syosetu: () => (/* binding */ syosetu),
 /* harmony export */   syosetuOrg: () => (/* binding */ syosetuOrg)
 /* harmony export */ });
-/* harmony import */ var _lib_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/lib/dom.ts");
-/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/rules/onePage/template.ts");
-/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/loglevel/lib/loglevel.js");
-/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_log__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _lib_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/lib/dom.ts");
+/* harmony import */ var _template__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/rules/onePage/template.ts");
 
 
-
-async function extractMultiplePageContent() {
-    const firstPageAnchor = document.querySelector('.c-pager__item--first');
-    const lastPageAnchor = document.querySelector('.c-pager__item--last');
-    let currentPageIndexBox = Array.from(document.querySelectorAll('.null_init'));
-    if (firstPageAnchor && lastPageAnchor) {
-        _log__WEBPACK_IMPORTED_MODULE_0___default().debug('Detected multiple pages, fetching all pages...');
-        const currentURL = window.location.pathname + window.location.search;
-        const lastPageHref = lastPageAnchor.getAttribute('href') ? lastPageAnchor.getAttribute('href') : currentURL;
-        const firstPageHref = firstPageAnchor.getAttribute('href') ? firstPageAnchor.getAttribute('href') : currentURL;
-        const hrefLastPageMatch = lastPageHref ? lastPageHref.match(/(.*\/\?p=)(\d+)/) : null;
-        const hrefFirstPageMatch = firstPageHref ? firstPageHref.match(/(.*\/\?p=)(\d+)/) : null;
-        const baseUrl = hrefLastPageMatch ? hrefLastPageMatch[1] : hrefFirstPageMatch ? hrefFirstPageMatch[1] : '';
-        const lastPageNumber = hrefLastPageMatch ? parseInt(hrefLastPageMatch[2], 10) : 1;
-        const currentPageNumberMatch = currentURL.match(/(.*\/\?p=)(\d+)/);
-        const currentPageNumber = currentPageNumberMatch ? parseInt(currentPageNumberMatch[2], 10) : 1;
-        const fetchAndAppendContent = async (pageNumber) => {
-            try {
-                const response = await fetch(`${baseUrl}${pageNumber}`);
-                const html = await response.text();
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const pageIndexBox = Array.from(doc.querySelectorAll("a.p-eplist__subtitle"));
-                _log__WEBPACK_IMPORTED_MODULE_0___default().debug(`fetching page ${pageNumber}, ${pageIndexBox.length} chapters found`);
-                if (pageIndexBox && pageNumber > 1) {
-                    currentPageIndexBox = currentPageIndexBox.concat(pageIndexBox);
+const currentPageIndexBox = document.querySelector('.index_box');
+const firstPageAnchor = document.querySelector('.novelview_pager-first');
+const lastPageAnchor = document.querySelector('.novelview_pager-last');
+if (firstPageAnchor && lastPageAnchor) {
+    const currentURL = window.location.pathname + window.location.search;
+    const lastPageHref = lastPageAnchor.getAttribute('href') ? lastPageAnchor.getAttribute('href') : currentURL;
+    const firstPageHref = firstPageAnchor.getAttribute('href') ? firstPageAnchor.getAttribute('href') : currentURL;
+    const hrefLastPageMatch = lastPageHref ? lastPageHref.match(/(.*\/\?p=)(\d+)/) : null;
+    const hrefFirstPageMatch = firstPageHref ? firstPageHref.match(/(.*\/\?p=)(\d+)/) : null;
+    const baseUrl = hrefLastPageMatch ? hrefLastPageMatch[1] : hrefFirstPageMatch ? hrefFirstPageMatch[1] : '';
+    const lastPageNumber = hrefLastPageMatch ? parseInt(hrefLastPageMatch[2], 10) : 1;
+    const currentPageNumberMatch = currentURL.match(/(.*\/\?p=)(\d+)/);
+    const currentPageNumber = currentPageNumberMatch ? parseInt(currentPageNumberMatch[2], 10) : 1;
+    const fetchAndAppendContent = async (pageNumber, insertAfterCurrentBox) => {
+        try {
+            const response = await fetch(`${baseUrl}${pageNumber}`);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const pageIndexBox = doc.querySelector('.index_box');
+            if (pageIndexBox && currentPageIndexBox) {
+                const childrenArray = Array.from(pageIndexBox.children);
+                if (insertAfterCurrentBox) {
+                    childrenArray.forEach(child => {
+                        currentPageIndexBox.appendChild(child.cloneNode(true));
+                    });
                 }
                 else {
-                    currentPageIndexBox = pageIndexBox;
+                    childrenArray.reverse().forEach(child => {
+                        currentPageIndexBox.insertBefore(child.cloneNode(true), currentPageIndexBox.firstChild);
+                    });
                 }
             }
-            catch (error) {
-                console.error('Error fetching page:', error);
-            }
-        };
-        const endPageNumber = lastPageNumber === -1 ? currentPageNumber : lastPageNumber;
-        for (let i = 1; i <= endPageNumber; i++) {
-            await fetchAndAppendContent(i);
         }
-        _log__WEBPACK_IMPORTED_MODULE_0___default().debug(`fetching pages from 1 to ${endPageNumber}, ${currentPageIndexBox.length} chapters found`);
+        catch (error) {
+            console.error('Error fetching page:', error);
+        }
+    };
+    for (let i = currentPageNumber - 1; i > 0; i--) {
+        await fetchAndAppendContent(i, false);
     }
-    return currentPageIndexBox;
+    const endPageNumber = lastPageNumber === -1 ? currentPageNumber : lastPageNumber;
+    for (let i = currentPageNumber + 1; i <= endPageNumber; i++) {
+        await fetchAndAppendContent(i, true);
+    }
 }
-const syosetu = async () => {
+const syosetu = () => {
     const getIntroDom = () => {
         const a = document.querySelector("#novel_ex > .more");
         if (a) {
@@ -12993,20 +12995,15 @@ const syosetu = async () => {
         }
         return document.querySelector("#novel_ex");
     };
-    const getAList = async () => {
-        let _aList = await extractMultiplePageContent();
-        if (_aList.length === 0) {
-            _aList = Array.from(document.querySelectorAll("a.p-eplist__subtitle"));
-        }
+    const getAList = () => {
+        const _aList = document.querySelectorAll("dl.novel_sublist2 dd.subtitle > a");
         if (_aList.length !== 0) {
-            _log__WEBPACK_IMPORTED_MODULE_0___default().debug(`${_aList.length} chapters found`);
             return _aList;
         }
         else {
             const a = document.createElement("a");
             a.href = document.location.href;
-            a.innerText = document.querySelector(".p-novel__title")?.innerText;
-            _log__WEBPACK_IMPORTED_MODULE_0___default().debug(`seems like only one chapter, using ${a.innerText} as title`);
+            a.innerText = document.querySelector(".novel_title")?.innerText;
             return [a];
         }
     };
@@ -13014,26 +13011,23 @@ const syosetu = async () => {
         const host = document.location.host;
         return host === "novel18.syosetu.com";
     };
-    return (0,_template__WEBPACK_IMPORTED_MODULE_1__/* .mkRuleClass */ .N)({
+    return (0,_template__WEBPACK_IMPORTED_MODULE_0__/* .mkRuleClass */ .N)({
         bookUrl: document.location.href,
-        bookname: document.querySelector(".p-novel__title").innerText.trim(),
-        author: document.querySelector(".p-novel__author > a, .p-novel__author").innerText
+        bookname: document.querySelector(".novel_title").innerText.trim(),
+        author: document.querySelector(".novel_writername > a, .novel_writername").innerText
             .replace("作者：", "")
             .trim(),
         introDom: getIntroDom(),
         introDomPatch: (dom) => dom,
         coverUrl: null,
-        aList: await getAList(),
-        sections: document.querySelectorAll(".p-eplist__subtitle"),
+        aList: getAList(),
+        sections: document.querySelectorAll("div.chapter_title"),
         getSName: (dom) => dom.innerText.trim(),
         getContent: (dom) => {
             const content = document.createElement("div");
-            const novelP = dom.querySelector(".p-novel__text--preface");
-            const novelA = dom.querySelector(".p-novel__text--afterword");
-            let i = 0;
-            if (novelP)
-                i = 1;
-            const novelHonbun = dom.querySelector('div.p-novel__body')?.querySelectorAll("div.p-novel__text")?.[i];
+            const novelP = dom.querySelector("#novel_p");
+            const novelHonbun = dom.querySelector("#novel_honbun");
+            const novelA = dom.querySelector("#novel_a");
             if (novelP) {
                 content.appendChild(novelP);
                 const hr = dom.createElement("hr");
@@ -13076,7 +13070,7 @@ const syosetuOrg = () => {
         }
         return document.querySelector("div.ss:nth-child(2)");
     };
-    return (0,_template__WEBPACK_IMPORTED_MODULE_1__/* .mkRuleClass */ .N)({
+    return (0,_template__WEBPACK_IMPORTED_MODULE_0__/* .mkRuleClass */ .N)({
         bookUrl: document.location.href,
         bookname: document.querySelector('div.ss > span[itemprop="name"], div.ss:nth-child(1) > p:nth-child(1) > span:nth-child(1) > a:nth-child(1)').innerText.trim(),
         author: document.querySelector('div.ss span[itemprop="author"] > a, div.ss:nth-child(1) > p:nth-child(1) > a:nth-child(2)')?.innerText.trim(),
@@ -13098,11 +13092,11 @@ const syosetuOrg = () => {
             return doc.querySelector("div#maind > div.ss:nth-child(1)");
         },
         contentPatch: (dom) => {
-            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_2__.rm)("p:nth-child(1)", false, dom);
-            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_2__.rm)("div.novelnavi", true, dom);
-            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_2__.rm)('div[style*="text-align:right;"]', true, dom);
-            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_2__.rm)("div#maegaki_open", true, dom);
-            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_2__.rm)("div#atogaki_open", true, dom);
+            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_1__.rm)("p:nth-child(1)", false, dom);
+            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_1__.rm)("div.novelnavi", true, dom);
+            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_1__.rm)('div[style*="text-align:right;"]', true, dom);
+            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_1__.rm)("div#maegaki_open", true, dom);
+            (0,_lib_dom__WEBPACK_IMPORTED_MODULE_1__.rm)("div#atogaki_open", true, dom);
             dom.querySelectorAll('a[name="img"]').forEach((a) => {
                 const img = document.createElement("img");
                 img.src = a.href;
@@ -13115,6 +13109,8 @@ const syosetuOrg = () => {
     });
 };
 
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
 
 /***/ }),
 
@@ -35840,6 +35836,75 @@ module.exports = /*#__PURE__*/JSON.parse('{"application/1d-interleaved-parityfec
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/async module */
+/******/ 	(() => {
+/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
+/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 		var resolveQueue = (queue) => {
+/******/ 			if(queue && queue.d < 1) {
+/******/ 				queue.d = 1;
+/******/ 				queue.forEach((fn) => (fn.r--));
+/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 			}
+/******/ 		}
+/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 			if(dep !== null && typeof dep === "object") {
+/******/ 				if(dep[webpackQueues]) return dep;
+/******/ 				if(dep.then) {
+/******/ 					var queue = [];
+/******/ 					queue.d = 0;
+/******/ 					dep.then((r) => {
+/******/ 						obj[webpackExports] = r;
+/******/ 						resolveQueue(queue);
+/******/ 					}, (e) => {
+/******/ 						obj[webpackError] = e;
+/******/ 						resolveQueue(queue);
+/******/ 					});
+/******/ 					var obj = {};
+/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
+/******/ 					return obj;
+/******/ 				}
+/******/ 			}
+/******/ 			var ret = {};
+/******/ 			ret[webpackQueues] = x => {};
+/******/ 			ret[webpackExports] = dep;
+/******/ 			return ret;
+/******/ 		}));
+/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
+/******/ 			var queue;
+/******/ 			hasAwait && ((queue = []).d = -1);
+/******/ 			var depQueues = new Set();
+/******/ 			var exports = module.exports;
+/******/ 			var currentDeps;
+/******/ 			var outerResolve;
+/******/ 			var reject;
+/******/ 			var promise = new Promise((resolve, rej) => {
+/******/ 				reject = rej;
+/******/ 				outerResolve = resolve;
+/******/ 			});
+/******/ 			promise[webpackExports] = exports;
+/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
+/******/ 			module.exports = promise;
+/******/ 			body((deps) => {
+/******/ 				currentDeps = wrapDeps(deps);
+/******/ 				var fn;
+/******/ 				var getResult = () => (currentDeps.map((d) => {
+/******/ 					if(d[webpackError]) throw d[webpackError];
+/******/ 					return d[webpackExports];
+/******/ 				}))
+/******/ 				var promise = new Promise((resolve) => {
+/******/ 					fn = () => (resolve(getResult));
+/******/ 					fn.r = 0;
+/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
+/******/ 				});
+/******/ 				return fn.r ? promise : getResult();
+/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 			queue && queue.d < 0 && (queue.d = 0);
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -36388,7 +36453,7 @@ async function getRule() {
         case "ncode.syosetu.com":
         case "novel18.syosetu.com": {
             const { syosetu } = await Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, "./src/rules/onePage/original/syosetu.ts"));
-            ruleClass = await syosetu();
+            ruleClass = syosetu();
             break;
         }
         case "syosetu.org": {
