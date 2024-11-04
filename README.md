@@ -6,8 +6,6 @@
 
 替换后，后续脚本的更新将更改为本页面版本，若要使用原作者版本，需要切换安装下面原介绍内的链接。
 
-# 原介绍
-
 一个**可扩展的**通用型小说下载器。
 
 ## 关于 404 小说文库项目
@@ -133,7 +131,7 @@ EPUB 文件请使用相应阅读器阅读。
 | [棉花糖小说网](https://www.mht99.com/)            | ✅       | ❎       |                                                                                          |
 | [笔趣阁](https://www.xbiquge.tw/)                 | ✅       | ❎       |                                                                                          |
 | [红叶书斋](https://www.007zw.com/)                | ✅       | ❎       |                                                                                          |
-| [哩哔轻小说](https://www.linovelib.com/)          | ✅       | ❎       |                                                                                          |
+| [哩哔轻小说](https://www.linovelib.com/)          | ✅       | ❎       |    因需要基于邻近章节修复隐藏链接的章节，生成目录时间变慢，大约2分钟。                                                                                      |
 | [落秋中文](https://www.luoqiuzw.com/)             | ✅       | ❎       |                                                                                          |
 | [一笔阁](https://www.yibige.cc/)                  | ✅       | ❎       |                                                                                          |
 | [腐书网](https://www.fushuwang.org/)              | ✅       | ❎       |                                                                                          |
@@ -148,11 +146,11 @@ EPUB 文件请使用相应阅读器阅读。
 | [笔趣阁小说网](http://www.biquge66.com/)          | ✅       | ❎       |                                                                                          |
 | [海棠小说网](http://m.haitangtxt.net/)            | ✅       | ❎       | 部分文字被图片替换，请使用 HTML 版查看。<br>如需替换清理图片，请自行生成图片文字对照表。 |
 | [笔趣阁](https://www.biquzw.la/)                  | ✅       | ❎       |                                                                                          |
-| [25 中文网](http://www.25zw.org/)                 | ✅       | ❎       |                                                                                          |
+| [25 中文网](http://www.i25zw.com/)                 | ✅       | ❎       |                                                                                          |
 | [天域小说网](https://www.tycqzw.com/)             | ✅       | ❎       |                                                                                          |
 | [完本神站](https://www.wanben.org/)               | ✅       | ❎       |                                                                                          |
 | [燃文小说](https://www.ranwen.la)                 | ✅       | ❎       |                                                                                          |
-| [望书阁](https://www.wangshuge.la/)               | ✅       | ❎       |                                                                                          |
+| [望书阁](https://www.wangshugu.org/)               | ✅       | ❎       |                                                                                          |
 | [百合小说网](https://m.baihexs.com/)              | ✅       | ❎       |                                                                                          |
 | [全书斋](https://www.quanshuzhai.com/)            | ✅       | ❎       |                                                                                          |
 | [蔷薇后花园](https://houhuayuan.xyz/)             | ✅       | ❎       |                                                                                          |
@@ -193,11 +191,44 @@ EPUB 文件请使用相应阅读器阅读。
 
 ## Token 填写
 
-当前部分网站（如晋江文学城）需要手动填写登录 token。
+当前部分网站（如晋江文学城）需要手动填写登录 token。app 平台一般为 Android 平台，其他平台一般不能使用（但也可以实践看看）。
+
+### 抓包软件和教程
+
+这里列举出一些常用的工具以供参考。
+
+1. 抓包精灵（Android）
+
+下载抓包精灵/NetCapture（可在 Google Play、酷安搜索到，其他软件也可以）并配置好设置。
+
+可参考 @ll0yiya 的经验（https://github.com/404-novel-project/novel-downloader/issues/599#issuecomment-1866142314）。
+
+2. HttpCanary（Android）
+
+可参考 https://blog.csdn.net/weixin_53891182/article/details/124739048 等资料。
+
+在编写脚本时，作者使用的版本：https://fin.lanzoub.com/iGYv20vym1dc。
+
+3. eCapture（Android）
+
+需要 Android 内核版本 5.4以上。
+
+详细信息，建议参考 https://mp.weixin.qq.com/s/KWm5d0uuzOzReRtr9PmuWQ 等资料。
+
+4. Charles(Windows / MacOS / Linux)
+
+官网： https://www.charlesproxy.com/
+
+需要电脑，可搭配 Android 模拟器。
+
+可参考 https://blog.csdn.net/qq_41631913/article/details/135748992。
+
+
+注：本节脚本代码中的值均为编撰，仅为示意。
 
 ### 晋江文学城
 
-下载抓包精灵（可在 Google Play、酷安搜索到，其他软件也可以）并配置好设置，然后登录晋江文学城 android app (其他平台均不适用)并随意浏览章节，在形如“https://app.jjwxc.org/androidapi/chapterContent?” 等链接中找到&token=后的字符串（止于下一个&）。
+需要抓取的数据：登录晋江文学城 Android app 并随意浏览章节，在形如“https://app.jjwxc.org/androidapi/chapterContent?” 等链接中找到 &token= 后的字符串（止于下一个&）
 
 在脚本管理器中新建如下脚本（不要把该脚本代码和其他脚本代码合并，除非你完全理解脚本的意思）并保存：
 
@@ -216,22 +247,47 @@ EPUB 文件请使用相应阅读器阅读。
   "use strict";
 
   const tokenOptions = {
-    Jjwxc: "填入token，形如客户号+下划线'_'+字母与数字混合的字符串",
+    Jjwxc: "11111111_750afc84c839aaaaafccd841fffd11f1", //填入token，形如客户号+下划线'_'+字母与数字混合的字符串
   };
   window.tokenOptions = tokenOptions;
 })();
 ```
+> [!CAUTION] 
+> 在设置中启用调试模式以后，日志可能会输出一些包含 token 的链接，这个设计的初衷是为了更快定位发生的问题。
+> 
+> 请不要直接将该日志上传到互联网上，当且仅当从事维护的开发者需要此日志定位问题时再提供（可以通过重新登录之前抓取 token 设备上的晋江 app 以使原 token 失效）。
 
-例如：
+### 息壤中文网 
+
+该网站的 Android app 启动时会检测 root 和 VPN 代理， 因此可能需要一些额外的操作以越过；此外 header 数据的获取需要安装CA证书，建议具有一定相关知识的人士进行操作。
+
+需要抓取的数据：登录息壤中文网 Android app 并随意浏览章节，在形如“https://android-api.xrzww.com/api/readWithEncrypt”的网址中转到 Request header（即请求头）页，header 中的 deviceIdentify 和 Authorization 即为需要抓取的数据（注意不要弄成 Response header（响应头））。
+
+在脚本管理器中新建如下脚本（不要把该脚本代码和其他脚本代码合并，除非你完全理解脚本的意思）并保存：
 
 ```javascript
-    Jjwxc:"11111111_750afc84c839aaaaafccd841fffd11f1",
-```
-> [!CAUTION] 
-> 在设置中启用调试模式以后，日志可能会输出一些包含token的链接，这个设计的初衷是为了更快定位发生的问题。
-> 
-> 请不要直接将该日志上传到互联网上，当且仅当从事维护的开发者需要此日志定位问题时再提供（可以通过重新登录之前抓取token设备上的晋江app以使原token失效）。
+// ==UserScript==
+// @name         auto inject tokenOptions
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  auto inject tokenOptions
+// @author       You
+// @match        *://*/*
+// @grant        none
+// ==/UserScript==
 
+(function () {
+  "use strict";
+
+  const tokenOptions = {
+    Xrzww: {
+            deviceIdentify: "webh517657567560", //填入 header中的deviceIdentify值
+            Authorization:  "Bearer 453453453e03ee546456546754756756", //填入 header中的Authorization值
+        },
+  };
+  window.tokenOptions = tokenOptions;
+})();
+```
 ## 高阶使用技巧
 
 ### 启用调试功能
@@ -501,7 +557,59 @@ function customFinishCallback(book: Book) {
 }
 window.customFinishCallback = customFinishCallback;
 ```
+## 附录 完整的自定义脚本
+```javascript
+// ==UserScript==
+// @name         Noveldownloader Settings
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Noveldownloader Settings
+// @author       You
+// @match        *://*/*
+// @grant        none
+// ==/UserScript==
 
+(function () {
+  "use strict";
+
+  // token 设置开始
+  const tokenOptions = {
+    Jjwxc: "填入token，形如客户号+下划线'_'+字母与数字混合的字符串",
+    Xrzww: {
+            deviceIdentify: "webh517657567560", //填入 header中的deviceIdentify值
+            Authorization:  "Bearer 453453453e03ee546456546754756756", //填入 header中的Authorization值
+        },
+  };
+  
+  //token 设置结束
+
+  // 章节过滤筛选开始
+  function chapterFilter(chapter) {
+    return chapter.chapterNumber <= 100;
+  }
+  //章节过滤筛选结束
+
+  //保存设置开始
+  const saveOptions = {
+    getchapterName: (chapter) => {
+      if (chapter.chapterName) {
+        return `第${chapter.chapterNumber.toString()}章 ${chapter.chapterName}`;
+      } else {
+        return `第${chapter.chapterNumber.toString()}章`;
+      } // 按 第i章 XXX 命名章节名字
+    },
+  };
+  //保存设置结束
+
+  if(saveOptions)
+    window.saveOptions = saveOptions;
+  if(tokenOptions)
+  window.tokenOptions = tokenOptions;
+  if(chapterFilter)
+    window.chapterFilter = chapterFilter;
+})();
+
+```
 ## 开发
 
 1. `git clone https://github.com/yingziwu/novel-downloader.git` 将项目克隆至本地（访问 github 可能需要使用代理）。
