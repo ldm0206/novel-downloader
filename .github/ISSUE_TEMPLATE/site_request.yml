@@ -40,11 +40,8 @@ body:
       label: 站点属性
       options:
         - label: 有收费章节存在
-          required: true
         - label: 所有内容有要求账户登录的限制（未登录不可浏览相关内容）
-          required: true
         - label: 部分内容（如收费章节）仅限App端可浏览
-          required: true
   - type: textarea
     id: reason
     attributes:
