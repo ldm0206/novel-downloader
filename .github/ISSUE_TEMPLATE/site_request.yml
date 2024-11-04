@@ -29,9 +29,9 @@ body:
     id: SiteType
     attributes:
       label: 站点类型
-    options:
-      - 原创网站
-      - 转载网站
+      options:
+        - 原创网站
+        - 转载网站
     validations:
       required: true
   - type: checkboxes
