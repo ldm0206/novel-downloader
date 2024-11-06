@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.970
+// @version        5.2.972
 // @author         bgme
 // @supportURL     https://github.com/404-novel-project/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -28327,16 +28327,20 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
             }
             if (CheckLogin != 0) {
                 const en = encode(password);
-                const id = rd() + ":" + generateAndroidId() + ":";
+                const id = rd() + ":" + generateAndroidId() + "d4:";
                 const sign = encode(Date.now() + "_" + id + "_");
                 let loginUrl = `https://app.jjwxc.org/androidapi/login?versionCode=402&loginName=${encodeURIComponent(account)}&encode=1&loginPassword=${encodeURIComponent(en)}&sign=${encodeURIComponent(sign)}&identifiers=${encodeURIComponent(id)}&autologin=1`;
                 const headers = {
-                    referer: "http://android.jjwxc.net?v=402",
                     Host: "app.jjwxc.org",
-                    source: "android",
-                    'versionCode': "402",
-                    'Version-Code': "402",
-                    'User-Agent': "Moxilla/5.0 (Linux; Android 10;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.181 Mobile Safari/537.36 " + Date.now().toString(),
+                    'User-Agent': `Mobile ${Date.now()}`,
+                    'Accept-Encoding': 'gzip',
+                    'Keep-Alive': '300',
+                    'Content-Type': '',
+                    'Accept': '',
+                    'Sec-Fetch-Site': '',
+                    'Sec-Fetch-Mode': '',
+                    'Sec-Fetch-Dest': '',
+                    'Accept-Language': '',
                 };
                 if (CheckLogin === 1) {
                     const resJson = await new Promise((resolve) => {
@@ -28344,6 +28348,9 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                             url: loginUrl,
                             headers: headers,
                             method: "GET",
+                            anonymous: true,
+                            fetch: true,
+                            responseType: "json",
                             onload: function (response) {
                                 const resultI = JSON.parse(response.responseText);
                                 loglevel_default().debug(`LoginResponse url ${loginUrl}`);
@@ -28358,22 +28365,26 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                         });
                     });
                     if (resJson.code == "221003") {
-                        const url = "https://app.jjwxc.org//appDevicesecurityAndroid/getDeviceSecurityCode";
-                        const body = "versionCode=402&username=" + encodeURIComponent(account) + "&checktype=" + t;
+                        const verifyUrl = "https://app.jjwxc.org//appDevicesecurityAndroid/getDeviceSecurityCode";
+                        const body = `versionCode=402&username=${encodeURIComponent(account)}&checktype=${t}`;
                         const responseJson = await new Promise((resolve) => {
                             (0,GM/* _GM_xmlhttpRequest */.nV)({
-                                url: url,
+                                url: verifyUrl,
                                 headers: headers,
                                 method: "POST",
                                 data: body,
+                                anonymous: true,
+                                responseType: "json",
                                 onload: function (response) {
                                     const resultI = JSON.parse(response.responseText);
-                                    loglevel_default().debug(`CodeResponse url ${url}`);
+                                    loglevel_default().debug(`CodeResponse url ${verifyUrl}`);
+                                    loglevel_default().debug(`${response.responseText}`);
+                                    loglevel_default().debug(`${body}`);
                                     if (response.status === 200) {
                                         resolve(resultI);
                                     }
                                     else {
-                                        loglevel_default().error(`CodeResponse url ${url} response status = ${response.status}`);
+                                        loglevel_default().error(`CodeResponse url ${verifyUrl} response status = ${response.status}`);
                                         resolve(resultI);
                                     }
                                 },
@@ -28395,6 +28406,9 @@ class Jjwxc extends rules/* BaseRuleClass */.Q {
                             url: loginUrl,
                             headers: headers,
                             method: "GET",
+                            anonymous: true,
+                            responseType: "json",
+                            fetch: true,
                             onload: function (response) {
                                 const resultI = JSON.parse(response.responseText);
                                 loglevel_default().debug(`LoginResponse url ${loginUrl}`);
