@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.968
+// @version        5.2.969
 // @author         bgme
 // @supportURL     https://github.com/404-novel-project/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -46,7 +46,7 @@
 // @exclude        *://dijiuben.com/*_*/*.html
 // @exclude        *://ncode.syosetu.com/*/*/
 // @exclude        *://novel18.syosetu.com/*/*/
-// @exclude        *://manhua.dmzj.com/
+// @exclude        *://manhua.idmzj.com/
 // @exclude        *://houhuayuan.vip/
 // @exclude        *://book.sfacg.com/Novel/*/*/*/
 // @exclude        *://www.alphapolis.co.jp/novel/*/*/episode/*
@@ -115,8 +115,8 @@
 // @match          *://www.idejian.com/book/*/
 // @match          *://www.wenku8.net/novel/*/*/index.htm
 // @match          *://www.wenku8.net/book/*.htm
-// @match          *://www.dmzj.com/info/*.html
-// @match          *://manhua.dmzj.com/*
+// @match          *://www.idmzj.com/info/*.html
+// @match          *://manhua.idmzj.com/*
 // @match          *://www.westnovel.com/*/*/
 // @match          *://www.mht99.com/*/
 // @match          *://www.banzhuer.org/*_*/
@@ -286,7 +286,7 @@
 // @connect        zhangyue01.com
 // @connect        cdn.wtzw.com
 // @connect        wenku8.com
-// @connect        dmzj.com
+// @connect        idmzj.com
 // @connect        007zw.com
 // @connect        hongyeshuzhai.com
 // @connect        linovelib.com
@@ -32839,7 +32839,7 @@ class Dmzj extends _rules__WEBPACK_IMPORTED_MODULE_0__/* .BaseRuleClass */ .Q {
     }
     async bookParse() {
         const bookUrl = document.location.href;
-        const isWwwHost = document.location.host === "www.dmzj.com";
+        const isWwwHost = document.location.host === "www.idmzj.com";
         const bookDom = isWwwHost
             ? document.querySelector(".comic_deCon > h1 > a")
             : document.querySelector(".anim_title_text > a > h1");
@@ -32868,7 +32868,7 @@ class Dmzj extends _rules__WEBPACK_IMPORTED_MODULE_0__/* .BaseRuleClass */ .Q {
         }
         const chapters = [];
         const cos = isWwwHost
-            ? document.querySelectorAll("div.zj_list_con:nth-child(4) > ul.list_con_li > li")
+            ? document.querySelectorAll("div.zj_list_con > ul.list_con_li > li")
             : document.querySelectorAll(".cartoon_online_border > ul > li");
         let chapterNumber = 0;
         for (const co of Array.from(cos)) {
@@ -32914,7 +32914,7 @@ class Dmzj extends _rules__WEBPACK_IMPORTED_MODULE_0__/* .BaseRuleClass */ .Q {
     }
     async chapterParse(chapterUrl, chapterName, isVIP, isPaid, charset, options) {
         function getpicUrlList(docI) {
-            const imgPrefix = "https://images.dmzj.com/";
+            const imgPrefix = "https://images.idmzj.com/";
             const scriptElement = Array.from(docI.querySelectorAll("head > script")).filter((s) => s.innerHTML.includes("eval("))[0];
             let pages = (0,_lib_dom__WEBPACK_IMPORTED_MODULE_6__/* .sandboxed */ .d6)(scriptElement.innerText + ";return pages;");
             pages = pages.replace(/\n/g, "");
@@ -32934,7 +32934,7 @@ class Dmzj extends _rules__WEBPACK_IMPORTED_MODULE_0__/* .BaseRuleClass */ .Q {
             }
         }
         _log__WEBPACK_IMPORTED_MODULE_3___default().debug(`[Chapter]请求 ${chapterUrl}`);
-        const isWwwHost = document.location.host === "www.dmzj.com";
+        const isWwwHost = document.location.host === "www.idmzj.com";
         const doc = await (0,_lib_http__WEBPACK_IMPORTED_MODULE_7__/* .getHtmlDOM */ .wA)(chapterUrl, charset);
         const picUrlList = getpicUrlList(doc);
         if (picUrlList) {
@@ -36769,8 +36769,8 @@ async function getRule() {
             ruleClass = Qimao;
             break;
         }
-        case "manhua.dmzj.com":
-        case "www.dmzj.com": {
+        case "manhua.idmzj.com":
+        case "www.idmzj.com": {
             const { Dmzj } = await Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, "./src/rules/special/reprint/dmzj.ts"));
             ruleClass = Dmzj;
             break;
