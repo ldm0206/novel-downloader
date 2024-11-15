@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.964
+// @version        5.2.998
 // @author         bgme
 // @supportURL     https://github.com/404-novel-project/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -58,6 +58,7 @@
 // @match          *://book.sfacg.com/Novel/*/MainIndex/
 // @match          *://book.sfacg.com/Novel/*/
 // @match          *://m.sfacg.com/b/*/
+// @match          *://lcread.com/bookpage/*/index.html
 // @match          *://book.qidian.com/info/*
 // @match          *://www.qidian.com/book/*
 // @match          *://www.jjwxc.net/onebook.php?novelid=*
@@ -122,7 +123,12 @@
 // @match          *://www.banzhuer.org/*_*/
 // @match          *://www.xbiquge.tw/book/*/
 // @match          *://www.xsbiquge.la/book/*/
+// @match          *://www.bqu9.cc/book/*/
+// @match          *://www.biququ.com/html/*/
+// @match          *://www.ddyucshu.cc/*/
+// @match          *://www.ddyveshu.cc/*/
 // @match          *://www.007zw.com/shuzhai/*/
+// @match          *://www.shaoniandream.com/book_detail/*
 // @match          *://www.linovelib.com/novel/*/catalog
 // @match          *://www.linovelib.com/novel/*.html
 // @match          *://www.bilinovel.com/novel/*.html
@@ -235,7 +241,8 @@
 // @match          *://www.akatsuki-novels.com/stories/index/novel_id~*
 // @match          *://www.alphapolis.co.jp/novel/*/*
 // @match          *://novelup.plus/story/*
-// @match          *://www.69shu.com/txt/*.htm
+// @match          *://69shuba.cx/book/*.htm
+// @match          *://book.xbookcn.net/search/label/*
 // @match          *://new-read.readmoo.com/mooreader/*
 // @match          *://www.iqingguo.com/book/detail/?id=*
 // @match          *://www.ywggzy.com/bxwx/*/
@@ -257,12 +264,16 @@
 // @match          *://www.boqugew.com/shu/*/
 // @match          *://www.qbtr.cc/*/*.html
 // @match          *://b.guidaye.com/*/*/
+// @match          *://www.esjzone.me/detail/*
+// @match          *://www.esjzone.cc/detail/*
+// @match          *://www.fxshu.top/*/*.html
 // @compatible     Firefox 100+
 // @compatible     Chrome 85+
 // @compatible     Edge 85+
 // @compatible     Opera 71+
 // @compatible     Safari 13.1+
 // @connect        self
+// @connect        www.fxshu.top
 // @connect        qidian.com
 // @connect        yuewen.com
 // @connect        kuangxiangit.com
@@ -334,6 +345,13 @@
 // @connect        bg3.co
 // @connect        xiaoshuowanben.com
 // @connect        xbyuan.com
+// @connect        shaoniandream.com
+// @connect        fuxs1.com
+// @connect        bqu9.cc
+// @connect        biququ.com
+// @connect        ddyucshu.cc
+// @connect        lcread.com
+// @connect        ddyveshu.cc
 // @connect        *
 // @grant          unsafeWindow
 // @grant          GM_info
