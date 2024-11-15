@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Init 🛎️
-        uses: 404-novel-project/novel-downloader-action@v1
+        uses: ldm0206/novel-downloader-action@v1
 
       - name: Run 🔧
         run: node --import tsx ./test/sites.ts
